@@ -1,0 +1,104 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage{url}
+\usepackage{parskip}
+
+\RequirePackage{color}
+\RequirePackage{graphicx}
+\usepackage{xcolor}
+\usepackage[scale=0.9]{geometry}
+
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage{supertabular}
+\usepackage{titlesec}
+\usepackage{multicol}
+\usepackage{multirow}
+
+\titleformat{\section}{\Large\bfseries\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{10pt}{10pt}
+
+\usepackage[
+  style=numeric,
+  sorting=ynt,
+  maxbibnames=10,
+  doi=true,
+  url=false,
+  backend=biber,
+  defernumbers=true
+]{biblatex}
+\addbibresource{citations/citations.bib}
+
+\DeclareFieldFormat{labelnumberwidth}{#1\adddot\space}
+\setlength{\biblabelsep}{0.5em}
+
+\AtEveryBibitem{%
+  \clearfield{isbn}%
+  \clearfield{issn}%
+  \clearfield{note}%
+  \clearfield{month}%
+  \clearfield{editor}%
+  \clearlist{language}%
+}
+
+\usepackage[unicode, draft=false]{hyperref}
+\definecolor{linkcolour}{rgb}{0,0.2,0.6}
+\hypersetup{colorlinks, breaklinks, urlcolor=linkcolour, linkcolor=linkcolour}
+
+\usepackage{fontawesome5}
+
+% ---- Footer setup ----
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{} % clear all headers/footers
+\renewcommand{\headrulewidth}{0pt} % remove header line
+\renewcommand{\footrulewidth}{0pt} % remove footer line
+\fancyfoot[C]{Updated On: \textit{\today}} % footer center
+\pagenumbering{gobble} % hide page numbers
+
+\begin{document}
+
+\begin{center}
+    {\Huge Publication List} \\[7.5pt]
+    \faUser \, \textbf{Md. Mosfikur Rahman} \\[0.2cm]
+    \faEnvelope \, \href{mailto:mdmosfikurrahman.cse@gmail.com}{mdmosfikurrahman.cse@gmail.com}
+\end{center}
+
+\vspace{0cm}
+
+\begin{refsegment}
+  \nocite{*}
+  \section*{Peer-Reviewed Journal Articles}
+  \printbibliography[
+    heading=none,
+    type=article,
+    segment=\therefsegment,
+    resetnumbers=true
+  ]
+\end{refsegment}
+
+% Uncomment if you want to show Book Chapters later
+% \begin{refsegment}
+%   \nocite{*}
+%   \section*{Book Chapters / Springer Series}
+%   \printbibliography[
+%     heading=none,
+%     type=incollection,
+%     segment=\therefsegment,
+%     resetnumbers=true
+%   ]
+% \end{refsegment}
+
+\begin{refsegment}
+  \nocite{*}
+  \section*{Conference Proceedings}
+  \printbibliography[
+    heading=none,
+    type=inproceedings,
+    segment=\therefsegment,
+    resetnumbers=true
+  ]
+\end{refsegment}
+
+\end{document}
+
